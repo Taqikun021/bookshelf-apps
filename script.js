@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
         cariBuku()
     })
 
-    if (isStorageExist()){
+    if (isStorageExist()) {
         getDataBuku()
     }
 })
@@ -50,7 +50,7 @@ document.addEventListener(SEARCH_EVENT, function () {
 })
 
 function isStorageExist() {
-    if (typeof (Storage) === undefined){
+    if (typeof (Storage) === undefined) {
         alert('Browser tidak mendukung fitur localStorage')
         return false
     }
@@ -58,7 +58,7 @@ function isStorageExist() {
 }
 
 function simpanData() {
-    if (isStorageExist()){
+    if (isStorageExist()) {
         const parsed = JSON.stringify(books)
         localStorage.setItem(STORAGE_KEY, parsed)
         document.dispatchEvent(new Event(SAVED_EVENT))
@@ -130,7 +130,7 @@ function getDataBuku() {
     const dataJSON = localStorage.getItem(STORAGE_KEY)
     const data = JSON.parse(dataJSON)
 
-    if (data !== null){
+    if (data !== null) {
         for (const item of data) books.push(item)
     }
 
@@ -141,7 +141,7 @@ function generateID() {
     return +new Date();
 }
 
-function tambahBuku(){
+function tambahBuku() {
     const id = generateID()
     const title = document.getElementById('inputBookTitle').value
     const author = document.getElementById('inputBookAuthor').value
@@ -155,7 +155,7 @@ function tambahBuku(){
     simpanData()
 }
 
-function cariBuku(){
+function cariBuku() {
     document.dispatchEvent(new Event(SEARCH_EVENT))
 }
 
